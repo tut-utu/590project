@@ -1,0 +1,6 @@
+*.pyc
+cv/*.p
+data/
+status/
+*.txt
+result_struct.json

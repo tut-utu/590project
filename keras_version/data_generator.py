@@ -52,7 +52,7 @@ class data_generator():
 def build_generator(wordtoix, max_len, batch_size=32, dataset='flickr8k'):
     captions = []
     images = []
-    df = pd.read_csv('flickr8k_training_dataset.txt', delimiter='\t')
+    df = pd.read_csv(f'{dataset}_training_dataset.txt', delimiter='\t')
     df = df.sample(frac=1)
     iter = df.iterrows()
     c = []
