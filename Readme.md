@@ -1,4 +1,4 @@
-This project contains *Python+numpy* source code for learning **Multimodal Recurrent Neural Networks** that describe images with sentences. The project convert karpathy's [neuraltalk](https://github.com/karpathy/neuraltalk) from python 2 to python 3 version, and add TensorFlow keras model.
+This project contains *Python+numpy* source code for learning **Multimodal Recurrent Neural Networks** that describe images with sentences. The project convert karpathy's [neuraltalk](https://github.com/karpathy/neuraltalk) from python 2 to python 3 version, and add TensorFlow Keras model.
 
 ## Overview
 The pipeline for the project looks as follows:
