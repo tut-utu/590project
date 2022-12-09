@@ -44,7 +44,7 @@ class data_generator():
         self._wordtoix = wordtoix
         self._ixtoword = ixtoword
         self._max_len = max_len
-
+        self._vocab_len = len(self._wordtoix)+1
         print(f'Length of the word index: {len(wordtoix)}')
 
 

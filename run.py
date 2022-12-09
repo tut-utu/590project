@@ -43,7 +43,7 @@ def main(params):
     data = data_generator(dataset=dataset)
     data.build_vocab(word_count_threshold=word_count_threshold)
     generatort = build_generator(data._wordtoix,data._max_len,batch_size,dataset)
-    model = keras_model(data._max_len,embedding_size=embedding_size,input_size=input_size,activation=activation)
+    model = keras_model(data._max_len,data._vocab_len,embedding_size=embedding_size,input_size=input_size,activation=activation)
     model.compile(metrics=metrics,loss=loss,optimizer=optimizer)
     if mode == 'exist':
         model.load_weights(checkpoint_filepath)
