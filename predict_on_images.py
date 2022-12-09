@@ -5,7 +5,7 @@ import datetime
 import numpy as np
 import code
 import os
-import cPickle as pickle
+import pickle
 import math
 import scipy.io
 
@@ -30,7 +30,7 @@ def main(params):
 
   # load the checkpoint
   checkpoint_path = params['checkpoint_path']
-  print 'loading checkpoint %s' % (checkpoint_path, )
+  print('loading checkpoint %s' % (checkpoint_path, ))
   checkpoint = pickle.load(open(checkpoint_path, 'rb'))
   checkpoint_params = checkpoint['params']
   dataset = checkpoint_params['dataset']
@@ -57,8 +57,8 @@ def main(params):
 
   # iterate over all images and predict sentences
   BatchGenerator = decodeGenerator(checkpoint_params)
-  for n in xrange(N):
-    print 'image %d/%d:' % (n, N)
+  for n in range(N):
+    print('image %d/%d:' % (n, N))
 
     # encode the image
     img = {}
@@ -77,13 +77,13 @@ def main(params):
     top_predictions = Ys[0] # take predictions for the first (and only) image we passed in
     top_prediction = top_predictions[0] # these are sorted with highest on top
     candidate = ' '.join([ixtoword[ix] for ix in top_prediction[1] if ix > 0]) # ix 0 is the END token, skip that
-    print 'PRED: (%f) %s' % (top_prediction[0], candidate)
+    print('PRED: (%f) %s' % (top_prediction[0], candidate))
     img_blob['candidate'] = {'text': candidate, 'logprob': top_prediction[0]}    
     blob['imgblobs'].append(img_blob)
 
   # dump result struct to file
   save_file = os.path.join(root_path, 'result_struct.json')
-  print 'writing predictions to %s...' % (save_file, )
+  print('writing predictions to %s...' % (save_file, ))
   json.dump(blob, open(save_file, 'w'))
 
   # dump output html
@@ -92,7 +92,7 @@ def main(params):
     html += '<img src="%s" height="400"><br>' % (img['img_path'], )
     html += '(%f) %s <br><br>' % (img['candidate']['logprob'], img['candidate']['text'])
   html_file = os.path.join(root_path, 'result.html')
-  print 'writing html result file to %s...' % (html_file, )
+  print('writing html result file to %s...' % (html_file, ))
   open(html_file, 'w').write(html)
 
 if __name__ == "__main__":
@@ -104,6 +104,6 @@ if __name__ == "__main__":
 
   args = parser.parse_args()
   params = vars(args) # convert to ordinary dict
-  print 'parsed parameters:'
-  print json.dumps(params, indent = 2)
+  print('parsed parameters:')
+  print(json.dumps(params, indent = 2))
   main(params)
