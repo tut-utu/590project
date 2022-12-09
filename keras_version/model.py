@@ -34,10 +34,13 @@ class keras_model():
             opt = RMSprop()
         self._final_model.compile(loss=loss, optimizer=opt, metrics=metrics)
 
-    def train(self,data_generator,epochs):
-        self._final_model.fit(data_generator,epochs=epochs)
+    def train(self,data_generator,epochs,callbacks):
+        self._final_model.fit(data_generator,epochs=epochs,callbacks=callbacks)
     
     def summary(self):
         print(self._final_model.summary())
+
+    def load_weights(self,filepath):
+        self._final_model.load_weights(filepath=filepath)
 
 
